@@ -5,16 +5,20 @@ import csv
 import sys
 import bcrypt
 
+
 # Salt to add to password before Hashing
 salt = b"$2b$12$ieYNkQp8QumgedUo30nuPO"
 
-# Hash the password
+
+# Salt & Hash the password
 def hash_password(password):
     return bcrypt.hashpw(password.encode(), salt=salt).decode()
+
 
 # Check if the password matches the hash
 def check_password(password, hashed):
     return bcrypt.checkpw(password.encode(), hashed.encode())
+
 
 # Load accounts from the CSV file
 def load_accounts():
@@ -24,11 +28,13 @@ def load_accounts():
     except FileNotFoundError:
         return []
 
+
 # Save a new account to the CSV file
 def save_account(username, password):
     with open("source.csv", "a") as file:
         writer = csv.DictWriter(file, fieldnames=["username", "password"])
         writer.writerow({"username": username, "password": hash_password(password)})
+
 
 # Register a new user
 def register():
@@ -45,6 +51,7 @@ def register():
     save_account(username, password)
     print("Registration successful!")
 
+
 # Login a user
 def login():
     username = input("Username? ").strip()
@@ -55,6 +62,7 @@ def login():
             print("Valid Confirmation!")
             return
     print("Invalid username or password.")
+
 
 # Main function
 def main():
@@ -70,4 +78,6 @@ def main():
         else:
             print("Invalid option. Please try again.")
 
-main()
+
+if __name__ == "__main__":
+    main()
