@@ -18,6 +18,7 @@
           "GitHub.codespaces": true,
           "ms-python.debugpy": true,
           "mechatroner.rainbow-csv": true,
+          "mathematic.vscode-pdf": true,
           "*": false
         },
         "files.autoSave": "onFocusChange",
@@ -37,7 +38,8 @@
         "oderwat.indent-rainbow",
         "GitHub.codespaces",
         "ms-python.debugpy",
-        "mechatroner.rainbow-csv"
+        "mechatroner.rainbow-csv",
+        "mathematic.vscode-pdf"
       ]
     }
   }
