@@ -32,12 +32,14 @@
    Example:
    ```python
    import bcrypt
-   hashed_password = bcrypt.hashpw(register_password.encode(), bcrypt.gensalt())
-   ```
 
-   During login, verify the password using `bcrypt.checkpw()`:
-   ```python
-   if bcrypt.checkpw(login_password.encode(), stored_password.encode()):
+   salt = b"$2b$12$ieYNkQp8QumgedUo30nuPO"
+
+   # Hashing a password
+   hashed_password = bcrypt.hashpw(password.encode(), salt=salt)
+
+   # Verifying a password
+   if bcrypt.checkpw(input_password.encode(), hashed_password):
        print("Login successful!")
    ```
 

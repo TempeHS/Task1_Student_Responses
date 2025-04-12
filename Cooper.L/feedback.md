@@ -57,15 +57,16 @@
    - **Fix**: Use a hashing library like `bcrypt` or `hashlib` to store hashed passwords instead of plain text.
 
    ```python
-   import hashlib
+   import bcrypt
 
-   def hash_password(password):
-       return hashlib.sha256(password.encode()).hexdigest()
+   salt = b"$2b$12$ieYNkQp8QumgedUo30nuPO"
 
-   # Example usage in Register():
-   hashed_password = hash_password(NewPass)
-   with open("test.txt", "a") as file:
-       file.write(f"{NewUser},{hashed_password}\n")
+   # Hashing a password
+   hashed_password = bcrypt.hashpw(password.encode(), salt=salt)
+
+   # Verifying a password
+   if bcrypt.checkpw(input_password.encode(), hashed_password):
+       print("Login successful!")
    ```
 
 ---

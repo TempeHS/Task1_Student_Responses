@@ -147,15 +147,21 @@
 
    Example:
    ```python
-   import hashlib
+   import bcrypt
 
-   def hash_password(password):
-       return hashlib.sha256(password.encode()).hexdigest()
+   salt = b"$2b$12$ieYNkQp8QumgedUo30nuPO"
+
+   # Hashing a password
+   hashed_password = bcrypt.hashpw(password.encode(), salt=salt)
+
+   # Verifying a password
+   if bcrypt.checkpw(input_password.encode(), hashed_password):
+       print("Login successful!")
 
    def register_user():
        new_username = input("Enter new username: ")
        new_password = input("Enter new password: ")
-       hashed_password = hash_password(new_password)
+       hashed_password = hash_password(input_password.encode())
        with open("source.csv", "a") as source:
            source.write(f"{new_username},{hashed_password}\n")
        print("New login details saved.")

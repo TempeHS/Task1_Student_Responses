@@ -110,9 +110,12 @@
    ```python
    import bcrypt
 
-   def hash_password(password):
-       return bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
+   salt = b"$2b$12$ieYNkQp8QumgedUo30nuPO"
 
-   def check_password(password, hashed):
-       return bcrypt.checkpw(password.encode(), hashed.encode())
+   # Hashing a password
+   hashed_password = bcrypt.hashpw(password.encode(), salt=salt)
+
+   # Verifying a password
+   if bcrypt.checkpw(input_password.encode(), hashed_password):
+       print("Login successful!")
    ```

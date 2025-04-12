@@ -55,22 +55,7 @@
 
 ---
 
-#### 4. **Password Hashing**
-   - The `bcrypt.hashpw` function is used incorrectly:
-     - The `password` argument must be encoded as bytes using `.encode()`.
-     - The `salt` is hardcoded, which defeats the purpose of using `bcrypt` (it should generate a unique salt for each password).
-
-   **Fix**: Use `bcrypt.gensalt()` to generate a unique salt and encode the password before hashing.
-
-   Example:
-   ```python
-   salt = bcrypt.gensalt()
-   HPW = bcrypt.hashpw(PW.encode(), salt)
-   ```
-
----
-
-#### 5. **File Handling**
+#### 4. **File Handling**
    - The code appends new credentials to `source.csv` without removing old entries when a password is changed. This can lead to duplicate entries.
    - The `Register` block writes to both `plain_text.txt` and `source.csv`, which is redundant and inconsistent.
 
@@ -93,7 +78,7 @@
 
 ---
 
-#### 6. **Input Handling**
+#### 5. **Input Handling**
    - The code does not handle invalid inputs gracefully. For example, if the user enters an invalid option in the main menu, the program continues without providing feedback.
 
    **Fix**: Add feedback for invalid inputs.
@@ -106,7 +91,7 @@
 
 ---
 
-#### 7. **Code Readability**
+#### 6. **Code Readability**
    - The code lacks comments and proper formatting, making it harder to understand.
    - The use of single-letter variable names like `A`, `UN`, and `PW` reduces readability.
 

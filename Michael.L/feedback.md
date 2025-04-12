@@ -22,12 +22,14 @@
    ```python
    import bcrypt
 
+   salt = b"$2b$12$ieYNkQp8QumgedUo30nuPO"
+
    # Hashing a password
-   hashed_password = bcrypt.hashpw(new_password.encode(), bcrypt.gensalt())
+   hashed_password = bcrypt.hashpw(password.encode(), salt=salt)
 
    # Verifying a password
-   if bcrypt.checkpw(password.encode(), check_password.encode()):
-       print("Logged in successfully!")
+   if bcrypt.checkpw(input_password.encode(), hashed_password):
+       print("Login successful!")
    ```
 
 ---

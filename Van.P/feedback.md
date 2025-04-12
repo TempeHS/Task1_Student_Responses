@@ -28,11 +28,14 @@
    ```python
    import bcrypt
 
-   def hash_password(password):
-       return bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+   salt = b"$2b$12$ieYNkQp8QumgedUo30nuPO"
 
-   def verify_password(password, hashed):
-       return bcrypt.checkpw(password.encode('utf-8'), hashed.encode('utf-8'))
+   # Hashing a password
+   hashed_password = bcrypt.hashpw(password.encode(), salt=salt)
+
+   # Verifying a password
+   if bcrypt.checkpw(input_password.encode(), hashed_password):
+       print("Login successful!")
    ```
 
 ---
