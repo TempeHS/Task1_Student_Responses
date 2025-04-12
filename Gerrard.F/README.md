@@ -16,7 +16,12 @@ Change password – A logged-in user can change their password which is updated 
 
 ### IPO Table
 
-<img src="IPO.png" />
+<img src="IPO_Chnage_Password.png" />
+<img src="IPO_Login.png" />
+<img src="IPO_New_Start.png" />
+<img src="IPO_Register.png" />
+<img src="IPO_Start.png" />
+
 
 ### Structure chart
 

@@ -1,3 +1,13 @@
+
+menu = True
+
+while menu:
+    
+
+
+
+
+
 def main():
     Choice_1 = input("Login - 1, Register - 2, Quit - 3 ")
     if Choice_1 == "1":
@@ -33,9 +43,10 @@ def Logged_In():
         Logged_In()
 
 def Log_In():
+    # Function for user to enter 
     Username = input("Username? ")
     Password = input("Password? ")
-    data1 = 0
+    data1 = 0 # ????
     with open("test.txt") as file:
         for line in file:
             row = line.rstrip().split(",")  
